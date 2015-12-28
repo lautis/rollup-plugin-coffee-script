@@ -1,8 +1,9 @@
 var coffeescript = require('coffee-script');
 var createFilter = require('rollup-pluginutils').createFilter;
+var objectAssign = require('object-assign');
 
-module.exports = function (options) {
-  options = Object.assign({}, options || {}, { sourceMap: true, bare: true });
+module.exports = function coffee(options) {
+  options = objectAssign({}, options || {}, { sourceMap: true, bare: true });
 
   var filter = createFilter(options.include, options.exclude);
   delete options.include;
