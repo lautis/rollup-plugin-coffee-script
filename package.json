@@ -1,0 +1,35 @@
+{
+  "name": "rollup-plugin-coffee-script",
+  "version": "0.1.0",
+  "description": "Integration between Rollup and CoffeeScript.",
+  "keywords": [
+    "rollup-plugin",
+    "coffeescript"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lautis/rollup-plugin-coffee-script",
+  "author": "Ville Lautanala",
+  "devDependencies": {
+    "babel-register": "^6.3.13",
+    "mocha": "^2.3.4",
+    "rollup": "^0.22.0"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-register"
+  },
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "rollup-plugin-commonjs": "^2.0.0",
+    "rollup-pluginutils": "^1.3.1"
+  },
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lautis/rollup-plugin-coffee-script.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lautis/rollup-plugin-coffee-script/issues"
+  }
+}
