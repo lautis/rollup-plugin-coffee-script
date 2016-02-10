@@ -24,6 +24,19 @@ describe('rollup-plugin-coffeescript', function() {
     });
   });
 
+  it('only runs code with defined extensions through coffee script', () => {
+    const entry = 'sample/invalid-coffee.js';
+    const source = fs.readFileSync(entry).toString();
+
+    return rollup.rollup({
+      entry: entry,
+      plugins: [coffeePlugin()]
+    }).then(function(bundle) {
+      const generated = bundle.generate();
+      assert.ok(generated.code.indexOf('answer = 42') !== -1);
+    });
+  });
+
   it('works with requires when used with commonjs plugin', () => {
     const entry = 'sample/import-class/main.coffee';
     const source = fs.readFileSync(entry).toString();
