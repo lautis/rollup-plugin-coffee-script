@@ -21,7 +21,7 @@ module.exports = function coffee(options) {
 
       return {
         code: output.js,
-        map: output.sourceMap
+        map: output.v3SourceMap
       };
     }
   };
