@@ -1,5 +1,5 @@
 import assert from 'assert';
-import rollup from 'rollup';
+import * as rollup from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
 import coffeePlugin from '..';
 import coffee from 'coffee-script';
@@ -45,8 +45,7 @@ describe('rollup-plugin-coffeescript', function() {
     }).then(function(bundle) {
       const generated = bundle.generate();
       const code = generated.code;
-      assert.ok(code.indexOf('class') === -1, code);
-      assert.ok(code.indexOf('var A = __commonjs(') !== -1, code);
+      assert.ok(code.indexOf('var A = createCommonjsModule(') !== -1);
     });
   });
 
