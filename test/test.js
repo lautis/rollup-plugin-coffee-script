@@ -65,4 +65,18 @@ describe('rollup-plugin-coffeescript', function() {
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
     });
   });
+
+  it('compiles .litcoffee', () => {
+    const entry = 'sample/litcoffee/main.litcoffee';
+    const source = fs.readFileSync(entry).toString();
+
+    return rollup.rollup({
+      entry: entry,
+      plugins: [coffeePlugin({})]
+    }).then(function(bundle) {
+      const generated = bundle.generate();
+      const code = generated.code;
+      assert.ok(generated.code.indexOf('answer = 42') !== -1);
+    });
+  });
 });
