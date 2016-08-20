@@ -4,7 +4,7 @@ var objectAssign = require('object-assign');
 var extname = require('path').extname;
 
 module.exports = function coffee(options) {
-  options = objectAssign({}, options || {}, { sourceMap: true, bare: true, extensions: ['.coffee'] });
+  options = objectAssign({ sourceMap: true, bare: true, extensions: ['.coffee'] }, options || {});
 
   var filter = createFilter(options.include, options.exclude);
   var extensions = options.extensions;

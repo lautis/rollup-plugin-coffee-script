@@ -51,4 +51,18 @@ describe('rollup-plugin-coffeescript', function() {
       assert.ok(code.indexOf('var A = __commonjs(') !== -1, code);
     });
   });
+
+  it('allows overriding default options', () => {
+    const entry = 'sample/litcoffee/example.coffee.md';
+    const source = fs.readFileSync(entry).toString();
+
+    return rollup.rollup({
+      entry: entry,
+      plugins: [coffeePlugin({ extensions: ['.md' ], literate: true })]
+    }).then(function(bundle) {
+      const generated = bundle.generate();
+      const code = generated.code;
+      assert.ok(generated.code.indexOf('answer = 42') !== -1);
+    });
+  });
 });
