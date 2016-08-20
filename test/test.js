@@ -75,4 +75,16 @@ describe('rollup-plugin-coffeescript', function() {
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
     });
   });
+
+  it('passes proper source map to rollup', () => {
+    const entry = 'sample/import-class/main.coffee';
+
+    return rollup.rollup({
+      entry: entry,
+      plugins: [coffeePlugin(), commonjs({ extensions: ['.coffee']})]
+    }).then(function(bundle) {
+      const generated = bundle.generate({ sourceMap: true });
+      assert.ok(generated.map.sources.indexOf(entry) === -1);
+    });
+  });
 });

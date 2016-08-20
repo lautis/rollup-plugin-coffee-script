@@ -11,6 +11,12 @@ function compileOptions(id, options, literateExtensions) {
   }
 }
 
+function sourceMap(output) {
+  if (output.v3SourceMap) {
+    return JSON.parse(output.v3SourceMap);
+  }
+}
+
 module.exports = function coffee(options) {
   options = objectAssign({
     sourceMap: true,
@@ -33,10 +39,9 @@ module.exports = function coffee(options) {
       if (extensions.indexOf(extname(id)) === -1) return null;
 
       var output = coffeescript.compile(code, compileOptions(id, options, literateExtensions));
-
       return {
         code: output.js,
-        map: output.sourceMap
+        map: sourceMap(output)
       };
     }
   };
