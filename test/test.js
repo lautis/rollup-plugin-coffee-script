@@ -26,7 +26,6 @@ describe('rollup-plugin-coffeescript', function() {
 
   it('only runs code with defined extensions through coffee script', () => {
     const entry = 'sample/invalid-coffee.js';
-    const source = fs.readFileSync(entry).toString();
 
     return rollup.rollup({
       entry: entry,
@@ -39,7 +38,6 @@ describe('rollup-plugin-coffeescript', function() {
 
   it('works with requires when used with commonjs plugin', () => {
     const entry = 'sample/import-class/main.coffee';
-    const source = fs.readFileSync(entry).toString();
 
     return rollup.rollup({
       entry: entry,
@@ -54,7 +52,6 @@ describe('rollup-plugin-coffeescript', function() {
 
   it('allows overriding default options', () => {
     const entry = 'sample/litcoffee/example.coffee.md';
-    const source = fs.readFileSync(entry).toString();
 
     return rollup.rollup({
       entry: entry,
@@ -68,7 +65,6 @@ describe('rollup-plugin-coffeescript', function() {
 
   it('compiles .litcoffee', () => {
     const entry = 'sample/litcoffee/main.litcoffee';
-    const source = fs.readFileSync(entry).toString();
 
     return rollup.rollup({
       entry: entry,
