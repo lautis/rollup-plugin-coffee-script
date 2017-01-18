@@ -42,11 +42,13 @@ use `rollup-plugin-commonjs` and add `.coffee` to extensions.
 import { rollup } from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
 import coffee from 'rollup-plugin-coffee-script';
+import nodeResolve from 'rollup-plugin-node-resolve';
 
 rollup({
   entry: 'main.coffee',
   plugins: [
     coffee(),
+    nodeResolve({ extensions: ['.js', '.coffee'] })
     commonjs({
       extensions: ['.js', '.coffee']
     })

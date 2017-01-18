@@ -1,6 +1,7 @@
 import assert from 'assert';
 import * as rollup from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
 import coffeePlugin from '..';
 import coffee from 'coffee-script';
 import fs from 'fs';
@@ -29,7 +30,7 @@ describe('rollup-plugin-coffeescript', function() {
 
     return rollup.rollup({
       entry: entry,
-      plugins: [coffeePlugin()]
+      plugins: [coffeePlugin(), nodeResolve({ extensions: ['.coffee', '.js'] })]
     }).then(function(bundle) {
       const generated = bundle.generate();
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
