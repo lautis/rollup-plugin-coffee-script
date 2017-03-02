@@ -19,7 +19,7 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin()]
     }).then(function(bundle) {
-      const generated = bundle.generate();
+      const generated = bundle.generate({ format: 'es' });
       const coffeeOutput = coffee.compile(source, { bare: true });
       assert.equal(generated.code.trim(), coffeeOutput.trim());
     });
@@ -32,7 +32,7 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin(), nodeResolve({ extensions: ['.coffee', '.js'] })]
     }).then(function(bundle) {
-      const generated = bundle.generate();
+      const generated = bundle.generate({ format: 'es' });
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
     });
   });
@@ -44,9 +44,9 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin(), commonjs({ extensions: ['.coffee']})]
     }).then(function(bundle) {
-      const generated = bundle.generate();
+      const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
-      assert.ok(code.indexOf('var A = createCommonjsModule(') !== -1);
+      assert.ok(code.indexOf('A$1 = (function') !== -1);
     });
   });
 
@@ -57,7 +57,7 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin({ extensions: ['.md' ], literate: true })]
     }).then(function(bundle) {
-      const generated = bundle.generate();
+      const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
     });
@@ -70,7 +70,7 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin({})]
     }).then(function(bundle) {
-      const generated = bundle.generate();
+      const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
       assert.ok(generated.code.indexOf('answer = 42') !== -1);
     });
@@ -83,7 +83,7 @@ describe('rollup-plugin-coffeescript', function() {
       entry: entry,
       plugins: [coffeePlugin(), commonjs({ extensions: ['.coffee']})]
     }).then(function(bundle) {
-      const generated = bundle.generate({ sourceMap: true });
+      const generated = bundle.generate({ sourceMap: true, format: 'es' });
       assert.ok(generated.map.sources.indexOf(entry) === -1);
     });
   });
