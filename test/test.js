@@ -1,6 +1,7 @@
 import assert from 'assert';
 import * as rollup from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import coffeePlugin from '..';
 import coffee from 'coffee-script';
@@ -47,6 +48,19 @@ describe('rollup-plugin-coffeescript', function() {
       const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
       assert.ok(code.indexOf('A$1 = (function') !== -1);
+    });
+  });
+
+  it('works with babel plugin', () => {
+    const entry = 'sample/babel/index.coffee';
+
+    return rollup.rollup({
+      entry: entry,
+      plugins: [coffeePlugin(), babel()]
+    }).then(function(bundle) {
+      const generated = bundle.generate({ format: 'es' });
+      const code = generated.code;
+      assert.ok(code.indexOf('fibonacci = regeneratorRuntime.mark') !== -1);
     });
   });
 

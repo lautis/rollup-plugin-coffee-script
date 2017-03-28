@@ -15,6 +15,7 @@
     "coffee-script": "^1.12.4",
     "mocha": "^3.0.2",
     "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2"
   },
   "scripts": {
