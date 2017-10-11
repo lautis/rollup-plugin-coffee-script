@@ -1,7 +1,7 @@
 # rollup-plugin-coffee-script
 [![Build Status](https://travis-ci.org/lautis/rollup-plugin-coffee-script.svg?branch=master)](https://travis-ci.org/lautis/rollup-plugin-coffee-script)
 
-Integration between Rollup and CoffeeScript.
+Integration between Rollup and CoffeeScript 2.
 
 ## Why?
 

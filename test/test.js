@@ -4,7 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import coffeePlugin from '..';
-import coffee from 'coffee-script';
+import coffee from 'coffeescript';
 import fs from 'fs';
 
 process.chdir(__dirname);
@@ -47,7 +47,7 @@ describe('rollup-plugin-coffeescript', function() {
     }).then(function(bundle) {
       const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
-      assert.ok(code.indexOf('A$1 = (function') !== -1);
+      assert.ok(code.indexOf('A$1 = class A') !== -1);
     });
   });
 
@@ -60,7 +60,7 @@ describe('rollup-plugin-coffeescript', function() {
     }).then(function(bundle) {
       const generated = bundle.generate({ format: 'es' });
       const code = generated.code;
-      assert.ok(code.indexOf('fibonacci = regeneratorRuntime.mark') !== -1);
+      assert.ok(code.indexOf('regeneratorRuntime.mark(function fibonacci') !== -1);
     });
   });
 

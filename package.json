@@ -12,7 +12,7 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.23.0",
-    "coffee-script": "^1.12.4",
+    "coffeescript": "^2.0",
     "mocha": "^3.0.2",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1",
@@ -27,7 +27,7 @@
     "rollup-pluginutils": "^2.0.1"
   },
   "peerDependencies": {
-    "coffee-script": "1.x"
+    "coffeescript": "2.x"
   },
   "files": [
     "index.js"

@@ -1,4 +1,4 @@
-var coffeescript = require('coffee-script');
+var coffeescript = require('coffeescript');
 var createFilter = require('rollup-pluginutils').createFilter;
 var objectAssign = require('object-assign');
 var extname = require('path').extname;
