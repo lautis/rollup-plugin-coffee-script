@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "object-assign": "^4.0.1",
-    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-pluginutils": "^2.0.1"
   },
   "peerDependencies": {
