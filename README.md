@@ -21,7 +21,7 @@ npm install --save-dev rollup-plugin-coffee-script
 import coffeescript from 'rollup-plugin-coffee-script';
 
 export default {
-  entry: 'main.coffee',
+  input: 'main.coffee',
 
   plugins: [
     coffeescript()
@@ -45,7 +45,7 @@ import coffee from 'rollup-plugin-coffee-script';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
 rollup({
-  entry: 'main.coffee',
+  input: 'main.coffee',
   plugins: [
     coffee(),
     nodeResolve({ extensions: ['.js', '.coffee'] })
