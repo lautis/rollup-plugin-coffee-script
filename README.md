@@ -12,6 +12,8 @@ additional build step.
 
 ```bash
 npm install --save-dev rollup-plugin-coffee-script
+# or
+yarn add -D rollup-plugin-coffee-script
 ```
 
 ## Usage
@@ -39,19 +41,18 @@ The CoffeeScript plugin doesn't resolve requires. Instead,
 use `rollup-plugin-commonjs` and add `.coffee` to extensions.
 
 ```js
-import { rollup } from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
 import coffee from 'rollup-plugin-coffee-script';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
-rollup({
+export default {
   input: 'main.coffee',
   plugins: [
     coffee(),
-    nodeResolve({ extensions: ['.js', '.coffee'] })
+    nodeResolve({ extensions: ['.js', '.coffee'] }),
     commonjs({
       extensions: ['.js', '.coffee']
     })
   ]
-}).then(...)
+}
 ```
